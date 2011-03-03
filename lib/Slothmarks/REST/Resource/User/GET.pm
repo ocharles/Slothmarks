@@ -4,7 +4,6 @@ use namespace::autoclean;
 
 use Data::TreeValidator::Constraints qw( required );
 use Data::TreeValidator::Sugar qw( branch leaf );
-use DBIx::Simple;
 use HTTP::Throwable::Factory qw( http_throw );
 
 with 'Sloth::Method';

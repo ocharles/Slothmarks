@@ -54,7 +54,8 @@ sub execute {
                     resource => 'user',
                     name => $user->user_id
                 )
-            ]
+            ],
+            $self->try_serialize($user)
         );
     }
 }
