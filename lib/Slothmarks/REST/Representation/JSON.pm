@@ -8,6 +8,7 @@ use JSON::Any;
 sub content_type { 'application/json' }
 
 my %map = (
+    'Slothmarks::Schema::Result::UserBookmark' => 'serialize_bookmark',
     'Slothmarks::Schema::Result::User' => 'serialize_user'
 );
 
@@ -23,6 +24,16 @@ sub serialize_user {
     return JSON::Any->objToJson({
         user_id => $user->user_id,
         full_name => $user->full_name
+    });
+}
+
+sub serialize_bookmark {
+    my ($self, $bm) = @_;
+    return JSON::Any->objToJson({
+        bookmarker => $bm->user->user_id,
+        uri => $bm->bookmark->uri,
+        summary => $bm->short_desc,
+        description => $bm->long_desc
     });
 }
 
